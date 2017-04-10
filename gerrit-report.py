@@ -15,7 +15,7 @@ def query(*args):
     s = subprocess.getoutput("ssh openbmc.gerrit gerrit query " +
                              "--format json --all-reviewers " +
                              "--dependencies --current-patch-set -- '" +
-                             " ".join(args) + "'")
+                             " ".join(args) + "'" + " 2>/dev/null")
     results = list(map(json.loads, s.splitlines()))
     del results[-1]
 
